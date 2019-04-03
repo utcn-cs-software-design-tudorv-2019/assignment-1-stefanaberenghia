@@ -11,7 +11,7 @@ namespace tema1ps.DBLayer.DAO
 {
     class UsersDAO
     {
-        string address = "Data Source=(local);Initial Catalog=tema1ps;Integrated Security=True";
+        string address = "Data Source=localhost\\sqlexpress;Initial Catalog=tema1ps;Integrated Security=True;";
 
         public int addUser(User u)
         {
@@ -118,7 +118,7 @@ namespace tema1ps.DBLayer.DAO
                 {
                     command.Connection = connection;           
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "SELECT * from user Where id=@id";
+                    command.CommandText = "SELECT * from user where id=@id";
                     command.Parameters.AddWithValue("@id", u);
 
                     try
@@ -158,7 +158,7 @@ namespace tema1ps.DBLayer.DAO
                 {
                     command.Connection = connection;           
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "SELECT * from user";
+                    command.CommandText = "SELECT * from [user]";
 
                     try
                     {
@@ -176,8 +176,9 @@ namespace tema1ps.DBLayer.DAO
 
                         }
                     }
-                    catch (SqlException)
+                    catch (SqlException e)
                     {
+                       
                     }
                     finally
                     {

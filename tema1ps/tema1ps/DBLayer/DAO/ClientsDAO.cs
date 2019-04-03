@@ -11,7 +11,7 @@ namespace tema1ps.DBLayer.DAO
 {
     class ClientsDAO
     {
-        string address = "Data Source=(local);Initial Catalog=tema1ps;Integrated Security=True";
+        string address = "Data Source=localhost\\sqlexpress;Initial Catalog=tema1ps;Integrated Security=True;";
 
         public int addClientInfo(ClientInfo u)
         {
@@ -22,7 +22,7 @@ namespace tema1ps.DBLayer.DAO
                 {
                     command.Connection = connection;
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "INSERT into clientInfo  VALUES (@id, @name, @card, @cnp)";
+                    command.CommandText = "INSERT into [clientInfo]  VALUES (@id, @name, @card, @cnp)";
                     command.Parameters.AddWithValue("@id", u.userID);
                     command.Parameters.AddWithValue("@name", u.name);
                     command.Parameters.AddWithValue("@card", u.identityCardNr);
@@ -54,7 +54,7 @@ namespace tema1ps.DBLayer.DAO
                 {
                     command.Connection = connection;
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "DELETE clientInfo Where userID=@id";
+                    command.CommandText = "DELETE [clientInfo] where userID=@id";
                     command.Parameters.AddWithValue("@id", u);
 
                     try
@@ -84,7 +84,7 @@ namespace tema1ps.DBLayer.DAO
                 {
                     command.Connection = connection;
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "UPDATE clientInfo SET  name = @name, identityCardNumber=@identityCardNumber, CNP=@CNP, adress=@adress Where userID=@id";
+                    command.CommandText = "UPDATE [clientInfo] SET  name = @name, identityCardNumber=@identityCardNumber, CNP=@CNP, adress=@adress Where userID=@id";
                     command.Parameters.AddWithValue("@id", u.userID);
                     command.Parameters.AddWithValue("@name", u.name);
                     command.Parameters.AddWithValue("@identityCardNumber", u.identityCardNr);
@@ -118,7 +118,7 @@ namespace tema1ps.DBLayer.DAO
                 {
                     command.Connection = connection;
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "SELECT * from clientInfo Where userID=@id";
+                    command.CommandText = "SELECT * from [clientInfo] Where userID=@id";
                     command.Parameters.AddWithValue("@id", u);
 
                     try
@@ -160,7 +160,7 @@ namespace tema1ps.DBLayer.DAO
                 {
                     command.Connection = connection;
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "SELECT * from clientInfo";
+                    command.CommandText = "SELECT * from [clientInfo]";
 
                     try
                     {

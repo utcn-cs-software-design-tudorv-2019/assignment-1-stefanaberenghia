@@ -168,10 +168,10 @@ namespace tema1ps.DBLayer.DAO
                             while (reader.Read())
                                 user.Add(new User
                                 {
-                                    ID = reader.GetInt32(0),
-                                    username = reader.GetString(1),
-                                    password = reader.GetString(2),
-                                    type = reader.GetInt32(3)
+                                    ID = int.Parse(reader["id"].ToString()),
+                                    username = reader["username"].ToString(),
+                                    password = reader["password"].ToString(),
+                                    type = int.Parse(reader["type"].ToString())
                                 }); ;
 
                         }
